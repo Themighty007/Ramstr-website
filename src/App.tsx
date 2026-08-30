@@ -6,6 +6,7 @@ import { HeroHUD } from './components/hero/HeroHUD';
 import { ProblemSection } from './components/sections/ProblemSection';
 import { ComparisonSection } from './components/sections/ComparisonSection';
 import { ArchitectureSection } from './components/sections/ArchitectureSection';
+import { AIBrainSection } from './components/sections/AIBrainSection';
 import { TemporalFusionSection } from './components/sections/TemporalFusionSection';
 import { PhysicsSection } from './components/sections/PhysicsSection';
 import { UncertaintySection } from './components/sections/UncertaintySection';
@@ -33,6 +34,7 @@ export default function App() {
         { id: 'problem', dark: false },
         { id: 'comparison', dark: false },
         { id: 'architecture', dark: false },
+        { id: 'aibrain', dark: false },
         { id: 'temporal', dark: true },
         { id: 'physics', dark: true },
         { id: 'uncertainty', dark: false },
@@ -95,6 +97,7 @@ export default function App() {
       <ProblemSection />
       <ComparisonSection />
       <ArchitectureSection />
+      <AIBrainSection />
       <TemporalFusionSection />
       <PhysicsSection />
       <UncertaintySection />

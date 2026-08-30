@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Satellite, Shield, Cpu, Clock, BarChart3, MapPin, Code2, Menu, X } from 'lucide-react';
+import { Satellite, Shield, Cpu, Clock, Brain, BarChart3, MapPin, Code2, Menu, X } from 'lucide-react';
 import { PROJECT_CONFIG } from '../../config/project';
 
 interface NavbarProps {
@@ -22,7 +22,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, isDarkTheme = tru
   const navItems = [
     { id: 'hero', label: 'SYSTEM', icon: Satellite },
     { id: 'problem', label: 'SCIENCE', icon: Shield },
-    { id: 'architecture', label: 'ARCHITECTURE', icon: Cpu },
+    { id: 'aibrain', label: 'THE BRAIN', icon: Brain },
     { id: 'temporal', label: 'AI LOGIC', icon: Clock },
     { id: 'metrics', label: 'METRICS', icon: BarChart3 },
     { id: 'gis', label: 'GIS LAB', icon: MapPin }

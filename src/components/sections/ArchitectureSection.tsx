@@ -3,7 +3,7 @@ import { Layers } from 'lucide-react';
 import { MermaidChart } from '../MermaidChart';
 
 export const ArchitectureSection: React.FC = () => {
-  const mermaidGraph = \
+  const mermaidGraph = `
 graph TD
     A[Raw 10m Satellite Images] --> B(Alignment & Cloud Check)
     B --> C{AI Brain: SwinIR Encoder}
@@ -20,7 +20,7 @@ graph TD
     style F fill:#e0f2fe,stroke:#2D7DFF,stroke-width:2px
     style H fill:#dcfce7,stroke:#22C55E,stroke-width:2px
     style I fill:#fee2e2,stroke:#FF334F,stroke-width:2px
-  \;
+  `;
 
   return (
     <section id="architecture" className="w-full py-24 bg-white text-[#080808] border-b border-gray-200">

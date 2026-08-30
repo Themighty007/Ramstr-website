@@ -32,7 +32,7 @@ export default function App() {
       const heroHeight = window.innerHeight;
       
       // Calculate hero scroll progress (0.0 to 1.0)
-      const p = Math.min(Math.max(scrollY / (heroHeight * 1.1), 0), 1);
+      const p = Math.min(Math.max(scrollY / (heroHeight * 2.2), 0), 1);
       setScrollProgress(p);
 
       // Detect dark vs light section for navbar morphing
@@ -95,16 +95,18 @@ export default function App() {
       />
 
       {/* 01 · HERO SECTION (Deep Space / WebGL Earth Descent) */}
-      <section id="hero" className="relative w-full h-screen">
-        <WebGLHero 
+      <section id="hero" className="relative w-full h-[300vh]">
+        <div className="sticky top-0 w-full h-screen overflow-hidden">
+          <WebGLHero 
           scrollProgress={scrollProgress} 
           onExploreClick={() => scrollToSection('problem')}
         />
         <HeroHUD 
-          scrollProgress={scrollProgress}
-          onExploreClick={() => scrollToSection('problem')}
-          onArchitectureClick={() => scrollToSection('architecture')}
-        />
+            scrollProgress={scrollProgress}
+            onExploreClick={() => scrollToSection('problem')}
+            onArchitectureClick={() => scrollToSection('architecture')}
+          />
+        </div>
       </section>
 
       {/* 02 · PROBLEM SECTION (10m Resolution Bottleneck & Hallucination Awareness) */}

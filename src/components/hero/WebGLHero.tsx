@@ -103,37 +103,7 @@ export const WebGLHero: React.FC<WebGLHeroProps> = ({ scrollProgress }) => {
       const cloudMesh = new THREE.Mesh(cloudGeom, cloudMat);
       earthGroup.add(cloudMesh);
 
-      // 3. Rayleigh Atmospheric Limb Glow Shell (Custom Shader)
-      const atmosphereGeom = new THREE.SphereGeometry(earthRadius * 1.14, 64, 64);
-      const atmosphereMat = new THREE.ShaderMaterial({
-        vertexShader: `
-          varying vec3 vNormal;
-          varying vec3 vPosition;
-          void main() {
-            vNormal = normalize(normalMatrix * normal);
-            vPosition = (modelViewMatrix * vec4(position, 1.0)).xyz;
-            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-          }
-        `,
-        fragmentShader: `
-          varying vec3 vNormal;
-          varying vec3 vPosition;
-          void main() {
-            vec3 viewDir = normalize(-vPosition);
-            float rim = 1.0 - max(dot(viewDir, vNormal), 0.0);
-            float intensity = pow(rim, 3.4);
-            // Rayleigh scattering celestial cyan/azure blue
-            vec3 atmosphereColor = vec3(0.08, 0.68, 1.0);
-            gl_FragColor = vec4(atmosphereColor, intensity * 0.85);
-          }
-        `,
-        blending: THREE.AdditiveBlending,
-        side: THREE.BackSide,
-        transparent: true,
-        depthWrite: false
-      });
-      const atmosphereMesh = new THREE.Mesh(atmosphereGeom, atmosphereMat);
-      earthGroup.add(atmosphereMesh);
+      
 
       // 4. Photorealistic Starfield in Deep Cosmic Space
       const starCount = 2200;
@@ -187,17 +157,17 @@ export const WebGLHero: React.FC<WebGLHeroProps> = ({ scrollProgress }) => {
 
       // 5. Realistic Lighting Configuration (Sun Direction + Ambient Space Fill)
       // Primary Sun Light (Day side illumination)
-      const sunLight = new THREE.DirectionalLight(0xffffff, 2.6);
+      const sunLight = new THREE.DirectionalLight(0xffffff, 4.0);
       sunLight.position.set(18, 6, 12);
       scene.add(sunLight);
 
       // Secondary Solar Rim Light (Atmosphere halo back-edge)
-      const rimLight = new THREE.DirectionalLight(0x0088ff, 0.7);
+      const rimLight = new THREE.DirectionalLight(0x0088ff, 1.5);
       rimLight.position.set(-14, -8, -10);
       scene.add(rimLight);
 
       // Deep space ambient fill (Prevents complete pitch black on dark side)
-      const spaceAmbient = new THREE.AmbientLight(0x040e1e, 0.55);
+      const spaceAmbient = new THREE.AmbientLight(0x11284a, 1.2);
       scene.add(spaceAmbient);
 
       // Initial Earth Tilt (23.4° axial tilt like real Earth)
@@ -325,10 +295,10 @@ export const WebGLHero: React.FC<WebGLHeroProps> = ({ scrollProgress }) => {
         if (p > 0.55) {
           const penetration = (p - 0.55) / 0.45;
           cloudMat.opacity = THREE.MathUtils.lerp(0.65, 0.12, penetration);
-          atmosphereMesh.scale.setScalar(THREE.MathUtils.lerp(1, 1.3, penetration));
+          
         } else {
           cloudMat.opacity = 0.65;
-          atmosphereMesh.scale.setScalar(1);
+          
         }
 
         renderer?.render(scene, camera);

@@ -79,63 +79,6 @@ export const HeroHUD: React.FC<HeroHUDProps> = ({
           </div>
         </div>
 
-        {/* Right Column: Floating Scientific Telemetry HUDs */}
-        <div className="hidden lg:flex lg:col-span-5 flex-col items-end gap-4 pointer-events-auto">
-          {/* Card 1: Sensor & Stack HUD */}
-          <div className="p-4 rounded-xl bg-black/60 border border-white/15 backdrop-blur-md shadow-2xl max-w-xs w-full text-left">
-            <div className="flex items-center justify-between text-[11px] font-mono text-[#00F0FF] border-b border-white/10 pb-2 mb-2">
-              <span className="flex items-center gap-1.5">
-                <Compass className="w-3.5 h-3.5" />
-                ORBITAL SENSING
-              </span>
-              <span className="text-emerald-400">ACTIVE</span>
-            </div>
-            <div className="space-y-1.5 text-xs font-mono">
-              <div className="flex justify-between text-neutral-400">
-                <span>CONSTELLATION</span>
-                <span className="text-white">SENTINEL-2 L2A</span>
-              </div>
-              <div className="flex justify-between text-neutral-400">
-                <span>SPECTRAL BANDS</span>
-                <span className="text-white">B02 / B03 / B04 / B08</span>
-              </div>
-              <div className="flex justify-between text-neutral-400">
-                <span>TEMPORAL DEPTH</span>
-                <span className="text-[#00F0FF] font-bold">T = 5 FRAMES</span>
-              </div>
-              <div className="flex justify-between text-neutral-400">
-                <span>INFERRED GSD</span>
-                <span className="text-[#B7F000] font-bold">2.5 m (4× SR)</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Card 2: Physical & Trust State */}
-          <div className="p-4 rounded-xl bg-black/60 border border-white/15 backdrop-blur-md shadow-2xl max-w-xs w-full text-left">
-            <div className="flex items-center justify-between text-[11px] font-mono text-[#B7F000] border-b border-white/10 pb-2 mb-2">
-              <span className="flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5" />
-                OBSERVATION LOCK
-              </span>
-              <span className="text-emerald-400">ENFORCED</span>
-            </div>
-            <div className="space-y-1.5 text-xs font-mono">
-              <div className="flex justify-between text-neutral-400">
-                <span>SENSOR PSF</span>
-                <span className="text-white">Gaussian (σ=1.5)</span>
-              </div>
-              <div className="flex justify-between text-neutral-400">
-                <span>CALIBRATION</span>
-                <span className="text-emerald-400 font-semibold">ECE &lt; TARGET</span>
-              </div>
-              <div className="flex justify-between text-neutral-400">
-                <span>UNCERTAINTY</span>
-                <span className="text-white">Aleatoric + Epistemic</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
 
       {/* Bottom Micro Data & Scroll Indicator */}

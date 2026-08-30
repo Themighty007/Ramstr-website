@@ -9,6 +9,7 @@ import { ArchitectureSection } from './components/sections/ArchitectureSection';
 import { AIBrainSection } from './components/sections/AIBrainSection';
 import { TemporalFusionSection } from './components/sections/TemporalFusionSection';
 import { PhysicsSection } from './components/sections/PhysicsSection';
+import { TrainingCurriculumSection } from './components/sections/TrainingCurriculumSection';
 import { UncertaintySection } from './components/sections/UncertaintySection';
 import { MetricsSection } from './components/sections/MetricsSection';
 import { GISDashboardSection } from './components/sections/GISDashboardSection';
@@ -36,7 +37,8 @@ export default function App() {
         { id: 'architecture', dark: false },
         { id: 'aibrain', dark: false },
         { id: 'temporal', dark: true },
-        { id: 'physics', dark: true },
+        { id: 'physics', dark: false },
+        { id: 'training', dark: false },
         { id: 'uncertainty', dark: false },
         { id: 'metrics', dark: false },
         { id: 'gis', dark: true },
@@ -100,6 +102,7 @@ export default function App() {
       <AIBrainSection />
       <TemporalFusionSection />
       <PhysicsSection />
+      <TrainingCurriculumSection />
       <UncertaintySection />
       <MetricsSection />
       <GISDashboardSection />

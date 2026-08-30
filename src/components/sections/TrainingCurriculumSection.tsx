@@ -1,115 +1,81 @@
 import React, { useState } from 'react';
-import { Layers, Zap, ArrowRight, ShieldCheck, CheckCircle2, AlertCircle } from 'lucide-react';
-import { TRAINING_PHASES } from '../../data/projectData';
+
+const CornerBrackets = () => (
+  <>
+    <div className="absolute top-0 left-0 w-1.5 h-1.5 border-t border-l border-gray-300"></div>
+    <div className="absolute top-0 right-0 w-1.5 h-1.5 border-t border-r border-gray-300"></div>
+    <div className="absolute bottom-0 left-0 w-1.5 h-1.5 border-b border-l border-gray-300"></div>
+    <div className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b border-r border-gray-300"></div>
+  </>
+);
 
 export const TrainingCurriculumSection: React.FC = () => {
-  const [activePhaseIndex, setActivePhaseIndex] = useState<number>(3); // Default phase 4
+  const [activePhase, setActivePhase] = useState(3); // Default to phase 04
+
+  const phases = [
+    { num: '01', title: 'SPATIAL FOUNDATION', loss: 'L1 + SAM', desc: 'Learn accurate spatial reconstruction.' },
+    { num: '02', title: 'PHYSICS CONSTRAINT', loss: 'OBSERVATION CONSISTENCY', desc: 'Prevent hallucinated geometry.' },
+    { num: '03', title: 'TEXTURE REFINEMENT', loss: 'GAN + PERCEPTUAL LOSS', desc: 'Improve texture realism and high-frequency details.' },
+    { num: '04', title: 'TRUST CALIBRATION', loss: 'HETEROSCEDASTIC UNCERTAINTY', desc: 'Teach the AI to recognize when it is uncertain.' },
+  ];
 
   return (
-    <section id="training" className="relative w-full py-24 md:py-36 bg-[#080808] text-white border-t border-white/10 overflow-hidden">
-      {/* Background Grid */}
-      <div className="absolute inset-0 scientific-grid-dark opacity-30 pointer-events-none"></div>
-
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+    <section id="training" className="w-full py-24 bg-[#F2F5F8] text-[#0F172A] border-b border-gray-200">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 text-center">
         
-        {/* Section Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-16">
-          <div className="lg:col-span-8">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-[#00F0FF] text-xs font-mono mb-4">
-              <Zap className="w-3.5 h-3.5" />
-              <span>10 · 4-PHASE PROGRESSIVE TRAINING CURRICULUM</span>
-            </div>
-            <h2 className="text-4xl sm:text-6xl font-black font-display tracking-tight text-white uppercase">
-              PROGRESSIVE<br/>
-              <span className="text-[#B7F000] text-glow-lime">CURRICULUM TRAINING.</span>
-            </h2>
+        {/* Header */}
+        <div className="mb-16">
+          <div className="text-[#0ea5e9] text-[10px] font-mono tracking-widest font-bold mb-4 uppercase">
+            05 / Methodology
           </div>
-
-          <div className="lg:col-span-4">
-            <p className="text-sm text-neutral-300 font-sans leading-relaxed">
-              Why train in 4 stages? GANs too early cause geometric instability. Uncertainty too early produces calibrated confidence on hallucinated predictions.
-            </p>
+          <h2 className="text-5xl md:text-7xl font-black font-sans tracking-tighter uppercase mb-6 text-[#1A202C]">
+            Training Evolution
+          </h2>
+          <div className="text-xs font-mono text-gray-500 tracking-[0.2em] uppercase">
+            Four-Phase Progressive Learning
           </div>
         </div>
 
-        {/* 4-Phase Timeline Selector */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-          {TRAINING_PHASES.map((phase, idx) => {
-            const isSelected = activePhaseIndex === idx;
+        {/* 4-Column Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
+          {phases.map((phase, idx) => {
+            const isActive = activePhase === idx;
             return (
-              <div
-                key={phase.phase}
-                onClick={() => setActivePhaseIndex(idx)}
-                className={`p-6 rounded-3xl border-2 transition-all cursor-pointer flex flex-col justify-between ${
-                  isSelected
-                    ? 'border-[#00F0FF] bg-white/10 shadow-2xl scale-102 z-10'
-                    : 'border-white/10 bg-white/5 hover:bg-white/10'
+              <div 
+                key={phase.num}
+                onClick={() => setActivePhase(idx)}
+                className={`relative bg-[#FAFCFD] p-6 pt-8 pb-10 flex flex-col h-full cursor-pointer transition-all duration-300 ${
+                  isActive ? 'shadow-xl shadow-[#0ea5e9]/5' : 'hover:bg-white'
                 }`}
               >
-                <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-3xl font-black font-display" style={{ color: phase.tagColor }}>
-                      {phase.phase}
-                    </span>
-                    <span className="text-[11px] font-mono text-neutral-400">{phase.epochs}</span>
-                  </div>
-                  <h3 className="text-base font-bold font-display text-white mb-2">{phase.title}</h3>
-                  <div className="p-2.5 rounded-xl bg-black/60 border border-white/10 text-[11px] font-mono text-neutral-300 break-all mb-3">
-                    {phase.formula}
+                <CornerBrackets />
+                
+                <div className="text-[#0ea5e9] font-mono text-[10px] mb-6">
+                  {phase.num}
+                </div>
+                
+                <h3 className={`font-mono text-sm tracking-wider font-bold mb-8 ${isActive ? 'text-[#0ea5e9]' : 'text-[#1A202C]'}`}>
+                  {phase.title}
+                </h3>
+                
+                <div className={`relative px-4 py-3 border mb-6 text-[10px] font-mono tracking-widest ${
+                  isActive ? 'border-[#0ea5e9]/30 bg-[#0ea5e9]/5 text-[#0ea5e9]' : 'border-gray-300 text-gray-500'
+                }`}>
+                  <div className="text-gray-400 text-[8px] mb-1">LOSS FUNCTION</div>
+                  {phase.loss}
+                  
+                  {/* Small Dot indicator on the top edge of the box */}
+                  <div className="absolute -top-1.5 left-1/2 transform -translate-x-1/2 w-3 h-3 bg-[#FAFCFD] flex items-center justify-center">
+                    <div className={`w-1.5 h-1.5 rounded-full ${isActive ? 'bg-[#0ea5e9] shadow-[0_0_8px_#0ea5e9]' : 'bg-gray-400'}`}></div>
                   </div>
                 </div>
-
-                <div className="pt-2 border-t border-white/10 flex items-center justify-between text-xs font-mono">
-                  <span className="text-neutral-400">OBJECTIVE:</span>
-                  <span className="font-bold text-[#00F0FF]">{phase.status}</span>
-                </div>
+                
+                <p className="text-gray-500 text-sm leading-relaxed mt-auto font-sans">
+                  {phase.desc}
+                </p>
               </div>
             );
           })}
-        </div>
-
-        {/* Active Phase Deep Dive & Why Order Matters Box */}
-        <div className="p-6 md:p-10 rounded-3xl bg-[#0e0e0e] border border-white/10 shadow-xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            
-            {/* Left: Active Phase Detailed Focus */}
-            <div className="lg:col-span-7">
-              <div className="text-xs font-mono text-[#00F0FF] font-bold uppercase tracking-wider mb-2">
-                ACTIVE CURRICULUM PHASE {TRAINING_PHASES[activePhaseIndex].phase} · {TRAINING_PHASES[activePhaseIndex].epochs}
-              </div>
-              <h3 className="text-2xl font-bold font-display text-white mb-4">
-                {TRAINING_PHASES[activePhaseIndex].title}
-              </h3>
-              <div className="p-4 rounded-2xl bg-black border border-white/10 font-mono text-sm text-[#B7F000] mb-4">
-                {TRAINING_PHASES[activePhaseIndex].formula}
-              </div>
-              <p className="text-sm text-neutral-300 font-sans leading-relaxed">
-                {TRAINING_PHASES[activePhaseIndex].focus}
-              </p>
-            </div>
-
-            {/* Right: Why The Order Matters Editorial Rule */}
-            <div className="lg:col-span-5 p-6 rounded-2xl bg-black border border-white/15 text-xs font-mono">
-              <div className="text-[#B7F000] font-bold uppercase mb-3 flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-[#B7F000]" />
-                WHY THIS EXACT ORDER?
-              </div>
-              <div className="space-y-3 text-neutral-300">
-                <div>
-                  <span className="text-red-400 font-bold">1. Adversarial Too Early:</span>
-                  <p className="text-neutral-400 text-[11px]">Causes discriminator mode collapse and hallucinated street grids.</p>
-                </div>
-                <div>
-                  <span className="text-red-400 font-bold">2. Uncertainty Too Early:</span>
-                  <p className="text-neutral-400 text-[11px]">Calibrates confidence over unstable, non-converged feature representations.</p>
-                </div>
-                <div className="pt-2 border-t border-white/10 text-[#00F0FF] font-bold">
-                  GEOMETRY → PHYSICS → TEXTURE → TRUST
-                </div>
-              </div>
-            </div>
-
-          </div>
         </div>
 
       </div>

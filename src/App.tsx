@@ -6,8 +6,10 @@ import { HeroHUD } from './components/hero/HeroHUD';
 import { ProblemSection } from './components/sections/ProblemSection';
 import { ComparisonSection } from './components/sections/ComparisonSection';
 import { ArchitectureSection } from './components/sections/ArchitectureSection';
+import { TemporalFusionSection } from './components/sections/TemporalFusionSection';
 import { PhysicsSection } from './components/sections/PhysicsSection';
 import { UncertaintySection } from './components/sections/UncertaintySection';
+import { MetricsSection } from './components/sections/MetricsSection';
 import { GISDashboardSection } from './components/sections/GISDashboardSection';
 import { OpenScienceSection } from './components/sections/OpenScienceSection';
 import { FinalCTASection } from './components/sections/FinalCTASection';
@@ -31,8 +33,10 @@ export default function App() {
         { id: 'problem', dark: false },
         { id: 'comparison', dark: false },
         { id: 'architecture', dark: false },
+        { id: 'temporal', dark: true },
         { id: 'physics', dark: true },
         { id: 'uncertainty', dark: false },
+        { id: 'metrics', dark: false },
         { id: 'gis', dark: true },
         { id: 'opensource', dark: false }
       ];
@@ -91,12 +95,13 @@ export default function App() {
       <ProblemSection />
       <ComparisonSection />
       <ArchitectureSection />
+      <TemporalFusionSection />
       <PhysicsSection />
       <UncertaintySection />
+      <MetricsSection />
       <GISDashboardSection />
       <OpenScienceSection />
       <FinalCTASection onScrollTo={scrollToSection} />
     </div>
   );
 }
-

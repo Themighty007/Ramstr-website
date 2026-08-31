@@ -13,6 +13,7 @@ import { TrainingCurriculumSection } from './components/sections/TrainingCurricu
 import { UncertaintySection } from './components/sections/UncertaintySection';
 import { MetricsSection } from './components/sections/MetricsSection';
 import { GISDashboardSection } from './components/sections/GISDashboardSection';
+import { AILabSection } from './components/sections/AILabSection';
 import { OpenScienceSection } from './components/sections/OpenScienceSection';
 import { FinalCTASection } from './components/sections/FinalCTASection';
 
@@ -106,6 +107,7 @@ export default function App() {
       <UncertaintySection />
       <MetricsSection />
       <GISDashboardSection />
+      <AILabSection />
       <OpenScienceSection />
       <FinalCTASection onScrollTo={scrollToSection} />
     </div>

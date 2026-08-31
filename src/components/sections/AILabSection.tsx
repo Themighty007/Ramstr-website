@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { UploadCloud, Zap, Target, BarChart2, CheckCircle2, AlertTriangle, Loader2 } from 'lucide-react';
+import { Upload, Zap, Target, BarChart2, CheckCircle2, AlertTriangle, Loader2, Terminal, Eye } from 'lucide-react';
 
 export const AILabSection: React.FC = () => {
   const [file, setFile] = useState<File | null>(null);
@@ -98,7 +98,7 @@ export const AILabSection: React.FC = () => {
                   </div>
                 ) : (
                   <>
-                    <UploadCloud className="w-10 h-10 text-neutral-500 mb-4" />
+                    <Upload className="w-10 h-10 text-neutral-500 mb-4" />
                     <span className="text-sm font-bold text-white mb-2">Drop Satellite Image</span>
                     <span className="text-[10px] font-mono text-neutral-500">10m GSD (Sentinel-2 Format)</span>
                     <span className="text-[10px] font-mono text-neutral-500 mt-1">PNG, JPG up to 10MB</span>
